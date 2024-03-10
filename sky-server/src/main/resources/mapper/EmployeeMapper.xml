@@ -12,7 +12,11 @@
         </where>
         order by create_time desc
     </select>
-<!--员工账号禁用-->
+<!--    根据员工id查询-->
+    <select id="getById" resultType="com.sky.entity.Employee">
+        select * from employee where id=#{id}
+    </select>
+    <!--员工账号禁用-->
     <update id="update">
         update employee
         <set>
@@ -26,5 +30,6 @@
             <if test="updateUser != null">update_User = #{updateUser},</if>
             <if test="status != null">status = #{status},</if>
         </set>
+            where id = #{id}
     </update>
 </mapper>
